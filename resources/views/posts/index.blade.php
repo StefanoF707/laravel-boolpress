@@ -21,7 +21,7 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ substr($post->body, 0, 60) . '...' }}</td>
                     <td>{{ $post->author }}</td>
-                    <td>{{ count($post->comments) }} commenti</td>
+                    <td>commenti: {{ count($post->comments) }}</td>
                     <td>
                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success">INFO</a>
                     </td>
@@ -32,5 +32,5 @@
 @endsection
 
 @section('footer')
-    <a href="{{ route('posts.create') }}" class="btn btn-success text-uppercase"></a>
+    <a href="{{ route('posts.create') }}" class="btn btn-success text-uppercase">crea nuovo prodotto</a>
 @endsection

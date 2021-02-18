@@ -18,7 +18,7 @@ class CommentsTableSeeder extends Seeder
 
         foreach ($posts as $post) {
 
-            for($i = 0; $i < 4; $i++) {
+            for($i = 0; $i < rand(1, 7); $i++) {
                 $comment = new Comment();
 
                 $comment->post_id = $post->id;
