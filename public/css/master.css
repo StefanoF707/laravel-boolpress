@@ -1,0 +1,19 @@
+.wrapper-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wrapper-cards > .card {
+    width: calc(100% / 4 - 20px);
+    margin: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    background: #8e95e6;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
