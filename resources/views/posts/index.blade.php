@@ -5,19 +5,32 @@
 @endsection
 
 @section('content')
-    <div class="wrapper-cards">
+    <table class="table table-dark table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>titolo</th>
+                <th>preview</th>
+                <th>autore</th>
+                <th>commenti</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($posts as $post)
+                <tr>
+                    <td>{{ $post->title }}</td>
+                    <td>{{ substr($post->body, 0, 60) . '...' }}</td>
+                    <td>{{ $post->author }}</td>
+                    <td>{{ count($post->comments) }} commenti</td>
+                    <td>
+                        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success">INFO</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection
 
-        @foreach ($posts as $post)
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $post->title }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $post->author }}</h6>
-                    <p class="card-text">{{ substr($post->body, 0, 100) . '...' }}</p>
-                    <p class="text-muted">{{ count($post->comments) }} commenti</p>
-                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary text-uppercase">info</a>
-                </div>
-            </div>
-        @endforeach
-
-    </div>
+@section('footer')
+    <a href="{{ route('posts.create') }}" class="btn btn-success text-uppercase"></a>
 @endsection

@@ -13,5 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("/", 'PostController@home')->name('welcome');
 
 Route::resource('posts', 'PostController');
