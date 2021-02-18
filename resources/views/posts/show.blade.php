@@ -27,5 +27,5 @@
         </ul>
     </div>
 
-    <a href="{{ route('post.index') }}" class="btn btn-danger text-uppercase my-2">torna agli articoli</a>
+    <a href="{{ route('posts.index') }}" class="btn btn-danger text-uppercase my-2">torna agli articoli</a>
 @endsection
