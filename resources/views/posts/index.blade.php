@@ -28,6 +28,8 @@
                 <th>autore</th>
                 <th>commenti</th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +41,16 @@
                     <td>commenti: {{ count($post->comments) }}</td>
                     <td>
                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success"><i class="fas fa-search"></i></a>
+                    </td>
+                    <td>
+                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+                    </td>
+                    <td>
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" name="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

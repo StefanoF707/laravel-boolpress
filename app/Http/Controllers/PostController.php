@@ -86,9 +86,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $tags = Tag::all();
+        return view('posts.edit', compact('post', 'tags'));
     }
 
     /**
@@ -98,9 +99,27 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate($this->postValidator);
+
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['title'], '-');
+
+        $post->update($data);
+
+        $infoPost = InfoPost::where('post_id', $post->id)->first();
+        $infoPost->update($data);
+
+        if (empty($data['tags'])) {
+            $post->tags()->detach();
+        } else {
+            $post->tags()->sync($data['tags']);
+        }
+
+        return redirect()->route('posts.index')
+            ->with('edited', 'Elemento' . " '$post->title' " . 'modificato correttamente');
+
     }
 
     /**
@@ -109,8 +128,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('posts.index')
+            ->with('deleted', 'Elemento' . " '$post->title' " . 'eliminato correttamente');
     }
 }
