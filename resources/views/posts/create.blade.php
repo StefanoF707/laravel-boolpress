@@ -35,6 +35,16 @@
             <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror" rows="5" placeholder="Inserisci il testo">{{ old('body') }}</textarea>
         </div>
 
+        <div class="form-group">
+            <h2>Tags</h2>
+            @foreach($tags as $tag)
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="tag-{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                </div>
+            @endforeach
+        </div>
+
         <button type="submit" name="button" class="btn btn-success text-uppercase">salva</button>
         <a href="{{ route('posts.index') }}" class="btn btn-danger text-uppercase">torna indietro</a>
     </form>

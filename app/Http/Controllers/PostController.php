@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -33,7 +34,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', compact('tags'));
     }
 
     /**
@@ -53,6 +55,10 @@ class PostController extends Controller
         $post = new Post;
         $post->fill($data);
         $post->save();
+
+        if (!empty($data["tags"])) {
+            $post->tags()->attach($data["tags"]);
+        }
 
         return redirect()->route('posts.index')
             ->with('created', 'Elemento' . " '$post->title' " . 'creato correttamente');

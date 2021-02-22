@@ -19,7 +19,7 @@
             {{ session('edited') }}
         </div>
     @endif
-    
+
     <table class="table table-dark table-striped table-bordered">
         <thead>
             <tr>
@@ -38,7 +38,7 @@
                     <td>{{ $post->author }}</td>
                     <td>commenti: {{ count($post->comments) }}</td>
                     <td>
-                        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success">INFO</a>
+                        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success"><i class="fas fa-search"></i></a>
                     </td>
                 </tr>
             @endforeach
