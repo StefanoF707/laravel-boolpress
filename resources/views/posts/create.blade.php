@@ -31,6 +31,24 @@
         </div>
 
         <div class="form-group">
+            <label for="post_status">stato del post</label>
+            <select class="form-control text-capitalize" id="post_status" name="post_status">
+                <option value="draft">draft</option>
+                <option value="public">public</option>
+                <option value="private">private</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comment_status">stato del commento</label>
+            <select class="form-control text-capitalize" id="comment_status" name="comment_status">
+                <option value="open">open</option>
+                <option value="closed">closed</option>
+                <option value="private">private</option>
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="body">testo</label>
             <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror" rows="5" placeholder="Inserisci il testo">{{ old('body') }}</textarea>
         </div>

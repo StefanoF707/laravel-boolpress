@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
+use App\InfoPost;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -50,10 +51,15 @@ class PostController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($data['title'], '-');
-        
-        $post = new Post;
+
+        $post = new Post();
         $post->fill($data);
         $post->save();
+
+        $data['post_id'] = $post->id;
+        $infoPost = new InfoPost();
+        $infoPost->fill($data);
+        $infoPost->save();
 
         if (!empty($data["tags"])) {
             $post->tags()->attach($data["tags"]);

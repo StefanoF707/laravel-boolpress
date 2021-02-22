@@ -7,7 +7,7 @@
 @section('content')
     <h2>{{ $post->title }}</h2>
     <h4 class="text-muted">{{ $post->author }}</h4>
-    <p>{{ $post->body }}</p>
+    <p clas="text-body">{{ $post->body }}</p>
     <h6><strong>Status del post:</strong> {{ $post->info->post_status }}</h6>
     <h6><strong>Status dei commenti:</strong> {{ $post->info->comment_status }}</h6>
 @endsection
