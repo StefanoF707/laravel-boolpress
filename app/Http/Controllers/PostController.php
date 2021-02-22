@@ -7,13 +7,6 @@ use App\Post;
 
 class PostController extends Controller
 {
-
-    public function home()
-    {
-        $posts = Post::all();
-
-        return view('welcome', compact('posts'));
-    }
     /**
      * Display a listing of the resource.
      *

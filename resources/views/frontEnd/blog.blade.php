@@ -14,7 +14,7 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{ $post->author }}</h6>
                     <p class="card-text">{{ substr($post->body, 0, 100) . '...' }}</p>
                     <p class="text-muted">commenti: {{ count($post->comments) }}</p>
-                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary text-uppercase">info</a>
+                    <a href="{{ route('blog.article', $post->id) }}" class="btn btn-primary text-uppercase">info</a>
                 </div>
             </div>
         @endforeach
