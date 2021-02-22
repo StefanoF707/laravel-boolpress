@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+
+    protected $postValidator = [
+        'title' => 'required|string|max:80',
+        'body' => 'required|string',
+        'author' =>'required|string|max:60'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +33,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -37,7 +44,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->postValidator);
+
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['title'], '-');
+
+
+        $post = new Post;
+        $post->fill($data);
+        $post->save();
+
+        return redirect()->route('posts.index')
+            ->with('created', 'Elemento' . " '$post->title' " . 'creato correttamente');
     }
 
     /**

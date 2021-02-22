@@ -14,12 +14,12 @@
 
 @section('footer')
 
-    <div class="comments mt-3">
+    <div class="mt-3">
         <h3>Commenti</h3>
 
-        <ul class="mb-3">
+        <ul class="comments mb-3">
             @foreach ($post->comments as $comment)
-                <li class="py-2 px-2 mb-2">
+                <li class="comment py-2 px-2 mb-2">
                     <h5><strong>Utente:</strong> {{ $comment->person }}</h5>
                     <p>{{ $comment->text }}</p>
                 </li>

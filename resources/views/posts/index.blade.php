@@ -5,6 +5,21 @@
 @endsection
 
 @section('content')
+
+    @if (session('created'))
+        <div class="alert alert-success">
+            {{ session('created') }}
+        </div>
+    @elseif (session('deleted'))
+        <div class="alert alert-danger">
+            {{ session('deleted') }}
+        </div>
+    @elseif (session('edited'))
+        <div class="alert alert-warning">
+            {{ session('edited') }}
+        </div>
+    @endif
+    
     <table class="table table-dark table-striped table-bordered">
         <thead>
             <tr>
@@ -32,5 +47,5 @@
 @endsection
 
 @section('footer')
-    <a href="{{ route('posts.create') }}" class="btn btn-success text-uppercase">crea nuovo prodotto</a>
+    <a href="{{ route('posts.create') }}" class="btn btn-success text-uppercase mb-3">crea nuovo prodotto</a>
 @endsection
