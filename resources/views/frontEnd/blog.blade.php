@@ -12,6 +12,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ $post->author }}</h6>
+                    <span class="badge"></span>
                     <p class="card-text">{{ substr($post->body, 0, 100) . '...' }}</p>
                     <p class="text-muted">commenti: {{ count($post->comments) }}</p>
                     <a href="{{ route('blog.article', $post->slug) }}" class="btn btn-primary text-uppercase">info</a>
