@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('blog', 'BlogController@index')->name('blog');
-Route::get('blog/{slug}', 'BlogController@show')->name('blog.article');
 
 Route::resource('posts', 'PostController');
+
+Route::get('blog', 'BlogController@index')->name('blog');
+
+Route::get('blog/{slug}', 'BlogController@show')->name('blog.article');
+
+Route::post('/blog/{id}/comment', 'BlogController@addComment')->name('add-comment');

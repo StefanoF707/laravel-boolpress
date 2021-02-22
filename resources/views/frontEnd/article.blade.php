@@ -25,6 +25,25 @@
                 </li>
             @endforeach
         </ul>
+
+        <div class="form-comments my-2 text-capitalize">
+            <form action="{{ route('add-comment', $post->id) }}" method="post">
+                @csrf
+                @method('POST')
+
+                <div class="form-group">
+                    <label for="person">autore</label>
+                    <input type="text" class="form-control @error('person') is-invalid @enderror" name="person" id="person" placeholder="Inserisci il nome dell'autore">
+                </div>
+
+                <div class="form-group">
+                    <label for="text">commento</label>
+                    <textarea name="text" id="text" class="form-control @error('text') is-invalid @enderror" rows="5" placeholder="Inserisci qui il tuo commento"></textarea>
+                </div>
+
+                <button type="submit" name="button" class="btn btn-success text-uppercase">invia</button>
+            </form>
+        </div>
     </div>
 
     <a href="{{ route('blog') }}" class="btn btn-danger text-uppercase my-2">torna al blog</a>

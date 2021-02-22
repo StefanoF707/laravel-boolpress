@@ -50,8 +50,7 @@ class PostController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($data['title'], '-');
-
-
+        
         $post = new Post;
         $post->fill($data);
         $post->save();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 
 class BlogController extends Controller
 {
@@ -24,6 +25,23 @@ class BlogController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
         return view('frontEnd.article', compact('post'));
+    }
+
+    public function addComment(Request $request, $id)
+    {
+        $request->validate([
+            'person' => 'required|string|max:255',
+            'text' => 'required|string|max:500',
+        ]);
+
+        $data = $request->all();
+        $data['post_id'] = $id;
+
+        $comment = new Comment();
+        $comment->fill($data);
+        $comment->save();
+
+        return back();
     }
 
 }
