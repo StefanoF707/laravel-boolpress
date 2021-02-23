@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+    <div class="article-img my-4">
+        <img src="{{$post->img_path != '' ? $post->img_path : asset('img/img-not.png')}}" alt="{{ $post->title }}">
+    </div>
+
+    <div class="tags text-center my-3">
+        @foreach ($post->tags as $tag)
+            <span class="mx-1 badge badge-dark">{{ $tag->name }}</span>
+        @endforeach
+    </div>
+
     <h2>{{ $post->title }}</h2>
     <h4 class="text-muted">{{ $post->author }}</h4>
     <p clas="text-body">{{ $post->body }}</p>
@@ -20,7 +30,7 @@
         <ul class="comments mb-3">
             @foreach ($post->comments as $comment)
                 <li class="comment py-2 px-2 mb-2">
-                    <h5><strong>Utente:</strong> {{ $comment->person }}</h5>
+                    <h5><strong>Utente:</strong> {{ $comment->person }} <small>{{ Carbon\Carbon::parse($comment->created_at )->diffForHumans() }}</small> </h5>
                     <p>{{ $comment->text }}</p>
                 </li>
             @endforeach
