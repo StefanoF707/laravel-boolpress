@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
 use App\InfoPost;
+use App\Comment;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
