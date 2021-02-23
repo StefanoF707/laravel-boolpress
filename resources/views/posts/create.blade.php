@@ -33,18 +33,18 @@
         <div class="form-group">
             <label for="post_status">stato del post</label>
             <select class="form-control text-capitalize" id="post_status" name="post_status">
-                <option @if({{ old('post_status') }} == 'draft' ? 'selected' : '')  @endif value="draft">draft</option>
-                <option @if({{ old('post_status') }} == 'public' ? 'selected' : '')  @endif value="public">public</option>
-                <option @if({{ old('post_status') }} == 'private' ? 'selected' : '')  @endif value="private">private</option>
+                <option @if( old('post_status') == 'draft') selected  @endif value="draft">draft</option>
+                <option @if( old('post_status') == 'public') selected @endif value="public">public</option>
+                <option @if( old('post_status')  == 'private')  selected @endif value="private">private</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="comment_status">stato del commento</label>
             <select class="form-control text-capitalize" id="comment_status" name="comment_status">
-                <option @if({{ old('comment_status') }} == 'open' ? 'selected' : '')  @endif value="open">open</option>
-                <option @if({{ old('comment_status') }} == 'closed' ? 'selected' : '')  @endif value="closed">closed</option>
-                <option @if({{ old('comment_status') }} == 'private' ? 'selected' : '')  @endif value="private">private</option>
+                <option @if( old('comment_status')  == 'open') selected  @endif value="open">open</option>
+                <option @if( old('comment_status') == 'closed') selected  @endif value="closed">closed</option>
+                <option @if( old('comment_status') == 'private') selected  @endif value="private">private</option>
             </select>
         </div>
 

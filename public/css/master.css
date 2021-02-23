@@ -22,3 +22,11 @@ li.comment {
 .text-body {
     word-wrap: break-word;
 }
+
+.table-title {
+    max-width: 150px;
+}
+.table-prev {
+    max-width: 200px;
+    word-wrap: break-word;
+}

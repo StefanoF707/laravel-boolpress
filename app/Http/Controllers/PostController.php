@@ -131,6 +131,9 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        $post->info->delete();
+        $post->comments->delete();
+        $post->tags->delete();
 
         return redirect()->route('posts.index')
             ->with('deleted', 'Elemento' . " '$post->title' " . 'eliminato correttamente');

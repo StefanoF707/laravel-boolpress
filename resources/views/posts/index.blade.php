@@ -26,7 +26,9 @@
                 <th>titolo</th>
                 <th>preview</th>
                 <th>autore</th>
+                <th>stato post</th>
                 <th>commenti</th>
+                <th>stato commenti</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -35,10 +37,12 @@
         <tbody>
             @foreach ($posts as $post)
                 <tr>
-                    <td>{{ $post->title }}</td>
-                    <td>{{ substr($post->body, 0, 60) . '...' }}</td>
+                    <td class="table-title">{{ $post->title }}</td>
+                    <td class="table-prev">{{ substr($post->body, 0, 60) . '...' }}</td>
                     <td>{{ $post->author }}</td>
+                    <td>{{ $post->info->post_status }}</td>
                     <td>commenti: {{ count($post->comments) }}</td>
+                    <td>{{ $post->info->comment_status }}</td>
                     <td>
                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success"><i class="fas fa-search"></i></a>
                     </td>
