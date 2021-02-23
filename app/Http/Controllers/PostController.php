@@ -15,7 +15,7 @@ class PostController extends Controller
     protected $postValidator = [
         'title' => 'required|string|max:80',
         'body' => 'required|string',
-        'author' =>'required|string|max:60'
+        'author' => 'required|string|max:60',
     ];
     /**
      * Display a listing of the resource.

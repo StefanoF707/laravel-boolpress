@@ -10,7 +10,8 @@ class Post extends Model
         'title',
         'slug',
         'body',
-        'author'
+        'author',
+        'img_path'
     ];
 
     public function info()

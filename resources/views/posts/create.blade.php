@@ -31,6 +31,11 @@
         </div>
 
         <div class="form-group">
+            <label for="img_path">immagine</label>
+            <input type="text" class="form-control @error('img_path') is-invalid @enderror" name="img_path" id="img_path" value="{{ old('img_path') }}" placeholder="Inserisci il percorso dell'immagine">
+        </div>
+
+        <div class="form-group">
             <label for="post_status">stato del post</label>
             <select class="form-control text-capitalize" id="post_status" name="post_status">
                 <option @if( old('post_status') == 'draft') selected  @endif value="draft">draft</option>

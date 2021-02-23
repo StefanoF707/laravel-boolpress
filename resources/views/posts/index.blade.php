@@ -26,6 +26,7 @@
                 <th>titolo</th>
                 <th>preview</th>
                 <th>autore</th>
+                <th>img_path</th>
                 <th>stato post</th>
                 <th>commenti</th>
                 <th>stato commenti</th>
@@ -40,6 +41,9 @@
                     <td class="table-title">{{ $post->title }}</td>
                     <td class="table-prev">{{ substr($post->body, 0, 60) . '...' }}</td>
                     <td>{{ $post->author }}</td>
+                    <td class="table-img">
+                        <img src="{{$post->img_path != '' ? $post->img_path : asset('img/img-not.png')}}" alt="{{ $post->title }}">
+                    </td>
                     <td>{{ $post->info->post_status }}</td>
                     <td>commenti: {{ count($post->comments) }}</td>
                     <td>{{ $post->info->comment_status }}</td>

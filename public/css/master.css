@@ -30,3 +30,9 @@ li.comment {
     max-width: 200px;
     word-wrap: break-word;
 }
+.table-img {
+    max-width: 100px;
+}
+.table-img > img {
+    width: 100%;
+}
